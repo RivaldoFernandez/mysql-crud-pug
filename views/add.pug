@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Agregar Alumno
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css")
+  body
+    div(class="container mt-5")
+      h1 Agregar Alumno
+      a(href="/" class="btn btn-success mb-4") Listado de alumnos
+      form(action="/add" method="POST")
+        div(class="mb-3")
+          label(for="nombre" class="form-label") Nombre:
+          input(type="text" name="nombre" class="form-control" placeholder="Ingrese el nombre" required)
+        div(class="mb-3")
+          label(for="edad" class="form-label") Edad:
+          input(type="number" name="edad" class="form-control" placeholder="Ingrese la edad" required)
+        div(class="mb-3")
+          label(for="curso_id" class="form-label") Curso:
+          select(name="curso_id" class="form-select" required)
+            each curso in cursos
+              option(value=curso.id)= curso.nombre
+        button(type="submit" class="btn btn-primary mt-3") Agregar

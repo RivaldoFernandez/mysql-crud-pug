@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title Editar Alumno
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css")
+  body
+    div(class="container mt-5")
+      h1 Editar Alumno
+      a(href="/" class="btn btn-success mb-4") Listado de alumnos
+
+      form(action=`/alumnos/${alumno.id}?_method=PUT` method="POST" class="w-50 mx-auto")
+        div(class="mb-3")
+          label(for="nombre" class="form-label") Nombre:
+          input(type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" value=alumno.nombre required)
+
+        div(class="mb-3")
+          label(for="edad" class="form-label") Edad:
+          input(type="number" name="edad" id="edad" class="form-control" placeholder="Edad" value=alumno.edad required)
+
+        div(class="mb-3")
+          label(for="curso_id" class="form-label") Curso:
+          select(name="curso_id" id="curso_id" class="form-select" required)
+            each curso in cursos
+              option(value=curso.id, selected=alumno.curso_id == curso.id ? 'selected' : '')= curso.nombre
+
+        button(type="submit" class="btn btn-primary w-100 mt-4") Actualizar
